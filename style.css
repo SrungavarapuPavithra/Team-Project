@@ -53,18 +53,17 @@ header{
 	z-index: 1000;
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
 
-}
-header .icons a:hover{
-	color: var(--pink);
+
 }
 header .logo{
 	font-size : 3rem;
 	color: #333;
 	font-weight: bolder;
+	color: skyblue;
 
 }
 header .logo span{
-	color: var(--pink);
+	color: darkmagenta;
 }
 header .navbar a:hover{
 	color: var(--pink);
@@ -84,7 +83,7 @@ header .icons a: hover{
 	display: flex;
 	align-items: center;
 	min-height: 100vh;
-	background-image: url("https://burst.shopifycdn.com/photos/tulip-flowers-in-corner.jpg?width=1200&format=pjpg&exif=1&iptc=1");
+	background-image: url("https://thumbs.dreamstime.com/b/abstract-dna-molecules-structure-science-technology-background-illustration-vector-119136443.jpg");
 	background-position: center;
 	background-size: cover;
 }
@@ -93,12 +92,12 @@ header .icons a: hover{
 
 }
 .home .content h3{
-	font-size: 6rem;
-	color:#333 ;
+	font-size: 4.5rem;
+	color:dimgray ;
 }
 .home .content span{
 	font-size: 3.5rem;
-	color:var(--pink) ;
+	color:darkblue ;
 	padding: 1rem 0;
 	line-height: 1.5;
 }
