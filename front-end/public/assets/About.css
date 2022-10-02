@@ -1,0 +1,36 @@
+body{
+    background-image: url("https: //images01.nicepage.com/c461c07a441a5d220e8feb1a/63b6a55f6a135764b05633e1/hgghgh.jpg");
+}
+
+.contents{
+    display:inline-flex;
+}
+.content-1 {
+    font-size: 1.3rem;
+    top: 75px;
+    background-color:whitesmoke;
+    width: 40%;
+    height: 300px;
+    text-align: center;
+    background-color:aliceblue;
+    color: blue;
+    padding:25px;
+    border-radius: 20px;
+    box-shadow: 1px 50px 40px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+.content-2 {
+    margin-left:50% ;
+    margin-top:5%;
+    font-size: 1.3rem;
+    color: palevioletred;
+    background-color: whitesmoke;
+    width:200%;
+    height: 100%;
+    background-color: aliceblue;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 10px 30px 30px 5px rgba(0, 0, 0, 0.2
+}
