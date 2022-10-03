@@ -14,7 +14,7 @@ function Academics() {
         <p>
           Click <NavLink style={{ color: "orange" }} to="/plans"> here </NavLink>to view the plans
         </p>
-        <span> Leave Aplications </span>
+        <span> Leave Applications </span>
         <p>
           Click <NavLink style ={{color:"orange"}} to="/leaveapp"> here </NavLink> to apply for a leave
         </p>

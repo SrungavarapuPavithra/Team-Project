@@ -19,11 +19,11 @@ const About = () => {
               clients realize thier boldest ambitions and build future-ready,
               sustainable businesses.
             </div>
-            {/* <div className="content-2">
+            <div className="content-2">
               A company recognized globally for its comprehensive portifolio of
               services,strong commitment to sustainability and good corporate
               citizenship.
-            </div> */}
+            </div>
             
           </div>
         </div>
