@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken');
 const express= require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+//const authenticate = require("../middleware/authenticate");
+//const cookieParser =require("cookie-parser");
+//router.use(cookieParser);
 
 require('../db/conn');
 const User = require('../model/userSchema');
@@ -9,26 +12,6 @@ const User = require('../model/userSchema');
 router.get('/' ,(req,res)=>{
     res.send(`Hello world from server router.js`);
 });
-
-//using Promises
-
-// router.post('/register',(req,res)=>{
-//     const {email,password,cpassword} = req.body;
-//     if (!email || !password || !cpassword) {
-//       return res.status(422).json({ error:"Pleaze fill all the details"});
-//     }
-//     User.findOne({email:email})
-//     .then((userExist)=>{
-//         if(userExist){
-//             return res.status(422).json({error:"Email already exits"});
-//         }
-//         const user = new User({email,password,cpassword});
-//         user.save().then(()=>{
-//             res.status(422).json({message:"User regisstered successfully"});
-//         }).catch((err)=>res.status(500).json({error:"failed to register"}));
-//     }).catch(err=>{console.log(err);});
-// });
-
 
 //Async-Await
 
@@ -73,7 +56,6 @@ router.post('/signin', async (req,res)=>{
         if(userLogin){
             const isMatch = await bcrypt.compare(password,userLogin.password);
             token  = await userLogin.generateAuthToken();
-            // console.log(token);
             res.cookie("jwtoken",token,{
                 expires: new Date(Date.now() + 25892000),
                 httpOnly : true
@@ -93,6 +75,11 @@ router.post('/signin', async (req,res)=>{
         console.log(err);
     }
 });
+
+
+// router.get('/teams',authenticate,(req,res)=>{
+//     res.send(req.rootUser);
+// });
 
 
 module.exports=router;

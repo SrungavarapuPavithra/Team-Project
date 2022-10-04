@@ -7,7 +7,6 @@ const Login = () => {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
 
-
   const loginUser = async (e)=>{
     e.preventDefault();
     console.log(email,password);
@@ -18,7 +17,7 @@ const Login = () => {
       },
       body:JSON.stringify({
         email,
-        password,
+        password
       })
     });
     
@@ -51,7 +50,7 @@ const Login = () => {
               name="email"
               placeholder="Email Address"
               value={email}
-              onChange={(e)=>{setEmail(e.target.value)}}
+              onChange={(e)=>setEmail(e.target.value)}
               required
             />
           </p>
@@ -63,13 +62,13 @@ const Login = () => {
               name="password"
               placeholder="Password"
               value={password}
-              onChange={(e)=>{setPassword(e.target.value)}}
+              onChange={(e)=>setPassword(e.target.value)}
               required
             />
           </p>
           <br />
           <p>
-            <input type="submit" onClick={loginUser} id="login" value="Login" />
+            <input type="submit" onClick={loginUser} id="signin"  name= "signin" value="Login" />
           </p>
           <br />
         </form>

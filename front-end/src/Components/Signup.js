@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-// import axios from "axios";
 
 const initial = {
   email: "",
@@ -12,35 +11,36 @@ const initial = {
 const Signup = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(initial);
-
+  let name,value;
   const handleInputs = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
-    setUser({ ...user,[e.target.name]: e.target.value });
+    console.log(user);
+    name = e.target.name;
+    value = e.target.value;
+    setUser({...user,[name]:value});
     console.log(user);
   }
 
   const PostData = async (e) => {
     e.PreventDefault();
     const { email, password, cpassword } = user;
-     console.log(user);
+    console.log(user);
     const res = await fetch('/register', {
       method: "POST",
       headers: {
         "Content-Type ": "application/json",
       },
-      body: JSON.stringify({
-       email,
-       password,
-       cpassword,
+      body:JSON.stringify({
+        email,
+        password,
+        cpassword
       })
     });
     const data = await res.json();
     if (res.status === 422||!data) {
       window.alert("Invalid Registration");
-      console.log("invalid  registration");
+      console.log("Invalid  Registration");
     } else {
-      window.alert("Registration is Successful");
+      window.alert("Registration  Successful");
       console.log(" registration successful"); 
       navigate('/login');   
     }
@@ -93,7 +93,8 @@ const Signup = () => {
             <input
               type="submit"
               onClick={PostData}
-              id="register"
+              id="signup"
+              name="signup"
               value="Register"
             />
           </p>
