@@ -1,6 +1,6 @@
 import './App.css'
 //import 'bootstrap/dist/css/bootstrap.css';
-import React from 'react';
+import React, { createContext, useReducer } from 'react';
 import { Route,Routes} from 'react-router-dom';
 import Home  from './Components/Home';
 import About from './Components/About';
@@ -15,10 +15,17 @@ import Success from './Components/Success';
 import Calender from './Components/Calender';
 import Plans from './Components/Plans';
 import LeaveApp from './Components/LeaveApp';
+import Logout from './Components/Logout';
+import { initialState, reducer } from './reducer/UseReducer';
 
+//context API 
+export const UserContext = createContext();
 function App() {
+  const [state,dispatch] = useReducer(reducer,initialState)
+  
   return (
     <>
+    <UserContext.Provider value ={{state,dispatch}} >
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -28,12 +35,14 @@ function App() {
         <Route path="/academics" element={<Academics />} />
         <Route path="/success" element={<Success />} />
         <Route path="/signin" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/calender" element={<Calender />} />
         <Route path="/leaveapp" element={<LeaveApp />} />
         <Route path="/plans" element={<Plans />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      </UserContext.Provider>
     </>
   );
 }

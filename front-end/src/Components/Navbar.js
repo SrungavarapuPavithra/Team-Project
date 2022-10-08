@@ -1,8 +1,41 @@
-import React from "react";
+import React,{ useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from '../App';
 
 const Navbar = () => {
-  return (
+  const {state,dispatch} = useContext(UserContext);
+  const RenderMenu = () => {
+    if(state){
+      return(
+        <>
+        <nav className="navbar">
+          <NavLink to="/">Home &nbsp;&nbsp;</NavLink><equal spacing />
+          <NavLink to="/about">About &nbsp;&nbsp;</NavLink><equal spacing />
+          <NavLink to="/teams">Teams &nbsp;&nbsp;</NavLink>
+          <NavLink to="/hiring">Hiring &nbsp;&nbsp;</NavLink>
+          <NavLink to="/academics">Academics &nbsp;&nbsp;</NavLink>
+          <NavLink to="/logout">Logout &nbsp;&nbsp;</NavLink>
+        </nav>
+        </>
+      )
+    }
+    else{
+      return(
+        <>
+        <nav className="navbar">
+          <NavLink to="/">Home &nbsp;&nbsp;</NavLink><equal spacing />
+          <NavLink to="/about">About &nbsp;&nbsp;</NavLink><equal spacing />
+          <NavLink to="/teams">Teams &nbsp;&nbsp;</NavLink>
+          <NavLink to="/hiring">Hiring &nbsp;&nbsp;</NavLink>
+          <NavLink to="/academics">Academics &nbsp;&nbsp;</NavLink>
+          <NavLink to="/signin">Login &nbsp;&nbsp;</NavLink>
+        </nav>
+        </>
+      )
+      
+    }
+  }
+    return (
     <>
       <link
         rel="stylesheet"
@@ -15,16 +48,7 @@ const Navbar = () => {
         <NavLink to="#" className="logo">
           SOLUTIONS<span>.</span>
         </NavLink>
-        <nav className="navbar">
-          <NavLink to="/">Home &nbsp;&nbsp;</NavLink>
-          <equal spacing />
-          <NavLink to="/about">About &nbsp;&nbsp;</NavLink>
-          <equal spacing />
-          <NavLink to="/teams">Teams &nbsp;&nbsp;</NavLink>
-          <NavLink to="/hiring">Hiring &nbsp;&nbsp;</NavLink>
-          <NavLink to="/academics">Academics &nbsp;&nbsp;</NavLink>
-          <NavLink to="/signin">Login &nbsp;&nbsp;</NavLink>
-        </nav>
+        <RenderMenu />
       </header>
     </>
   );

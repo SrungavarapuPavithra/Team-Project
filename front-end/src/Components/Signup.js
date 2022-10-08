@@ -2,15 +2,15 @@ import React from 'react'
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-const initial = {
-  email: "",
-  password: "",
-  cpassword: "",
-};
-
 const Signup = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(initial);
+  // const [email, setEmail] = useState('');
+  // const [password,setPassword] = useState('');
+  // const [cpassword,setCpassword] = useState('');
+  const [user,setUser] = useState({
+    email:"",password:"",cpassword:""
+  });
+
   let name,value;
   const handleInputs = (e) => {
     console.log(user);
@@ -21,28 +21,28 @@ const Signup = () => {
   }
 
   const PostData = async (e) => {
-    e.PreventDefault();
-    const { email, password, cpassword } = user;
-    console.log(user);
+    e.PreventDefault(); 
+    const {email,password,cpassword}=user;
+    console.log(email, password, cpassword);
     const res = await fetch('/register', {
       method: "POST",
       headers: {
-        "Content-Type ": "application/json",
+        "Content-Type ": "application/json"
       },
       body:JSON.stringify({
         email,
         password,
         cpassword
-      })
+     })
     });
     const data = await res.json();
-    if (res.status === 422||!data) {
+    if(res.status === 422 || !data) {
       window.alert("Invalid Registration");
       console.log("Invalid  Registration");
-    } else {
-      window.alert("Registration  Successful");
-      console.log(" registration successful"); 
-      navigate('/login');   
+    }else {
+      window.alert("Registration  Successfull");
+      console.log("Registration Successfull"); 
+      navigate("/signin");   
     }
   };
 
@@ -52,7 +52,7 @@ const Signup = () => {
       <div id="register-form-wrap">
         <h2>Register</h2>
         <form method="POST" id="register-form">
-          <br />
+          <br/>
           <p>
             <input
               type="email"
@@ -60,11 +60,12 @@ const Signup = () => {
               name="email"
               value={user.email}
               onChange={handleInputs}
+              // onChange={(e)=>setEmail(e.target.value)}
               placeholder="Email Address"
               required
             />
           </p>
-          <br />
+          <br/>
           <p>
             <input
               type="password"
@@ -72,11 +73,12 @@ const Signup = () => {
               name="password"
               value={user.password}
               onChange={handleInputs}
+              // onChange={(e)=>setPassword(e.target.value)}
               placeholder="Password"
               required
             />
           </p>
-          <br />
+          <br/>
           <p>
             <input
               type="password"
@@ -84,30 +86,24 @@ const Signup = () => {
               name="cpassword"
               value={user.cpassword}
               onChange={handleInputs}
+              // onChange={(e)=>setCpassword(e.target.value)}
               placeholder="Confirm Password"
               required
             />
           </p>
-          <br />
+          <br/>
           <p>
-            <input
-              type="submit"
-              onClick={PostData}
-              id="signup"
-              name="signup"
-              value="Register"
-            />
+            <input type="submit" onClick={ PostData } id="register" name="register" value="Register"/>
           </p>
-          <br />
+          <br/>
         </form>
         <div id="login-account-wrap">
           <p>
-            Already a member ? <NavLink to="/login"> Login </NavLink>
+            Already a member ? <NavLink to="/signin"> Login </NavLink>
           </p>
         </div>
       </div>
     </>
   );
-}
-
+};
 export default Signup;
