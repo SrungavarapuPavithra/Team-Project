@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 const express= require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-//const authenticate = require("../middleware/authenticate");
-//const cookieParser =require("cookie-parser");
-//router.use(cookieParser);
+const authenticate = require("../middleware/authenticate");
+const cookieParser =require("cookie-parser");
+router.use(cookieParser());
 
 require('../db/conn');
 const User = require('../model/userSchema');
@@ -72,9 +72,17 @@ router.post('/signin', async (req,res)=>{
     }
 });
 
-// router.get('/teams',authenticate,(req,res)=>{
-//     res.send(req.rootUser);
-// });
+router.get('/teams',authenticate,(req,res)=>{
+    res.send(req.rootUser);
+});
+
+router.get('/hiring',authenticate,(req,res)=>{
+    res.send(req.rootUser);
+});
+
+router.get('/academics',authenticate,(req,res)=>{
+    res.send(req.rootUser);
+});
 
 // Logout 
 router.get('/logout',(req,res)=>{
