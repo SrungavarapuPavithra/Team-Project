@@ -46,7 +46,7 @@ app.get('/academics',(req,res)=>{
     res.send(`Hello  Academics  from server`);
 });
 
-app.get('/signup', (req, res) => {
+app.get('/register', (req, res) => {
   res.send(`Hello register  world from server`);
 });
 

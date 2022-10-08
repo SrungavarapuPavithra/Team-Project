@@ -7,7 +7,6 @@
 	font-family:sans-serif;
 	outline: none;border: none;
 	text-decoration : none;
-	/* translate: .2s linear; */
 }
 header .navbar a{
 	justify-content: space-between;

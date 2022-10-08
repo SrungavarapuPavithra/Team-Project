@@ -26,6 +26,12 @@ p {
   padding: 0 60px;
 }
 
+#login-form-wrap #signin {
+  width: 50%;
+  height:50px;
+  line-height: 50%;
+}
+
 input {
   display: block;
   box-sizing: border-box;
@@ -63,8 +69,6 @@ input[type="submit"] {
   background-color: #3ca9e2;
   color: #fff;
   font-weight: bold;
-  /* -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease; */
   font-size: 18px;
   position: relative;
   display: inline-block;
@@ -73,8 +77,6 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
   background-color: #329dd5;
-   /* -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;  */
 }
 
 #create-account-wrap {

@@ -23,7 +23,7 @@ const Navbar = () => {
           <NavLink to="/teams">Teams &nbsp;&nbsp;</NavLink>
           <NavLink to="/hiring">Hiring &nbsp;&nbsp;</NavLink>
           <NavLink to="/academics">Academics &nbsp;&nbsp;</NavLink>
-          <NavLink to="/login">Login &nbsp;&nbsp;</NavLink>
+          <NavLink to="/signin">Login &nbsp;&nbsp;</NavLink>
         </nav>
       </header>
     </>

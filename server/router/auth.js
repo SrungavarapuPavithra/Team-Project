@@ -14,12 +14,11 @@ router.get('/' ,(req,res)=>{
 });
 
 //Async-Await
-
 router.post('/register', async (req,res)=>{
-    const {email,password,cpassword}= req.body;
+    const {email,password,cpassword} = req.body;
     console.log(req.body);
     if (!email || !password || !cpassword) {
-      return res.status(422).json({ message:`email:${email},password:${password},cpassword:${cpassword}`,error:"Pleaze fill all the details"});
+      return res.status(422).json({error:"Pleaze fill all the details"});
     }
     try{  
         const userExist = await User.findOne({email:email});
@@ -40,35 +39,32 @@ router.post('/register', async (req,res)=>{
     }
 })
 
-
 //login route 
-
 router.post('/signin', async (req,res)=>{
    try{
         let token;
         const {email,password} = req.body;
         console.log(req.body);
         if(!email || !password){
-                return res.status(400).json({error : "Pleaze fill required  data "});
+            return res.status(400).json({error : "Pleaze fill required  data "});
         }
         const userLogin =  await User.findOne({ email : email });
-           
         if(userLogin){
             const isMatch = await bcrypt.compare(password,userLogin.password);
             token  = await userLogin.generateAuthToken();
             res.cookie("jwtoken",token,{
                 expires: new Date(Date.now() + 25892000),
-                httpOnly : true
+                httpOnly : true,
             });
             if(!isMatch){
-                res.status(400).json({error:" invalid credentials  "});
+                res.status(400).json({error:" invalid credentials"});
                 console.log("invalid credentials");
             }else{
-                res.json({message:"user login successful"});
-                console.log("user login successful");
+                res.json({message:"user login successfull"});
+                console.log("user login successfull");
             }
         }else{
-            res.status(400).json({error:" invalid credentials"});
+            res.status(400).json({error:"invalid credentials"});
             console.log("invalid credentials");
         }    
     }catch(err){
@@ -76,10 +72,8 @@ router.post('/signin', async (req,res)=>{
     }
 });
 
-
 // router.get('/teams',authenticate,(req,res)=>{
 //     res.send(req.rootUser);
 // });
-
 
 module.exports=router;

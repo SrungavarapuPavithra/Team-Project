@@ -37,8 +37,8 @@ const LeaveApp = () => {
               type="number"
               id="days"
               name="days"
+              min="0"
             //   value={user.cpassword}
-
             //   onChange={handleInputs}
               placeholder="No. of Days"
               required
