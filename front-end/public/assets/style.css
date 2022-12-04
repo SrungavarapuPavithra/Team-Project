@@ -87,7 +87,6 @@ header .icons a:hover{
 }
 .home .content{
 	max-width: 50rem;
-
 }
 .home .content h3{
 	font-size: 3.0rem;
@@ -97,9 +96,13 @@ header .icons a:hover{
 	font-size: 3.5rem;
 	color:darkblue ;
 	padding: 1rem 0;
+	padding-left: 2rem;
 	line-height: 1.5;
 }
-
+.home .content .Error{
+	padding-top: 1rem;
+	padding-left: 20rem;
+}
 header .navbar a:visited{
 	color: blue;
 }

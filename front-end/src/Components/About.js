@@ -23,8 +23,7 @@ const About = () => {
               A company recognized globally for its comprehensive portifolio of
               services,strong commitment to sustainability and good corporate
               citizenship.
-            </div>
-            
+            </div>          
           </div>
         </div>
       </section>

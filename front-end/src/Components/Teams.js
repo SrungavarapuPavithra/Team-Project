@@ -19,10 +19,9 @@ function Teams() {
         const error = new Error(res.error);
         throw error;
       }
-
     }catch(err){
       console.log(err);
-      navigate('/signin');
+      navigate('/login');
     }
   }
 

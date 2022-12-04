@@ -6,8 +6,7 @@ const Calender = () => {
       <section className="home" id="home">
         <div className="content">
           <h3>Academic Calender </h3>
-          <span>Monthly Report</span>
-          
+          <span>Monthly Report</span>     
         </div>
       </section>
     </>

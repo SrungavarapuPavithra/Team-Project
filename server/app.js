@@ -19,17 +19,9 @@ app.get('/about',(req,res)=>{
     res.send(`Hello About  world from server`);
 });
 
-app.get('/signin',(req,res)=>{
+app.get('/login',(req,res)=>{
     res.send(`Hello  Login world from server`);
 });
-
-// app.get('/hiring',(req,res)=>{
-//     res.send(`Hello  Hiring from server`);
-// });
-
-// app.get('/academics',(req,res)=>{
-//     res.send(`Hello  Academics  from server`);
-// });
 
 app.get('/register', (req, res) => {
   res.send(`Hello register  world from server`);
