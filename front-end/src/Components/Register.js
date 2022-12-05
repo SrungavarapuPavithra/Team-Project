@@ -8,10 +8,9 @@ const Register = () => {
     name:"",email:"",team:"",password:"",cpassword:""
   });
 
-  let name,value;
   const handleInputs = (e) => {
-    name = e.target.name;
-    value = e.target.value;
+    const name = e.target.name;
+    const value = e.target.value;
     setUser({...user,[name]:value});
     console.log(user);
   }
@@ -36,7 +35,7 @@ const Register = () => {
     }else {
       window.alert("Registration  Successfull");
       console.log("Registration Successfull"); 
-      navigate("/");
+      navigate("/teams");
     }
   };
 

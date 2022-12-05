@@ -3,33 +3,65 @@ const mongoose = require(`mongoose`);
 const  bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-    email :{
-        type :String,
-        required :true
-    },
-    password :{
-        type :String,
-        required :true
-    },
-    cpassword :{
-        type :String,
-        required :true
-    },
-    tokens :[
-        {
-            token:{
-                type :String,
-                required :true  
-            }
-        }
-    ]
-})
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  team: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  cpassword: {
+    type: String,
+    required: true
+  },
+  // onleave: {
+  //   type: Boolean,
+  //   required: true,
+  //   default :false
+  // },
+  leaves: [
+    {
+      email: {
+        type: String,
+        required: true
+      },
+      team: {
+        type: String,
+        required: true
+      },
+      from :{
+        type: Date,
+        required:true,
+        default: Date.now
+      },
+      days: {
+        type: Number,
+        required: true
+      }
+    }
+  ],
+  tokens: [
+    {
+      token: {
+        type: String,
+        required: true,
+      }
+    }
+  ]
+});
 
 // we are  hashing password
 userSchema.pre('save', async function(next){
-    console.log('hi i am pre  password');
     if(this.isModified('password')){
-        console.log('hi i am post  password');
         this.password = await bcrypt.hash(this.password,12);
         this.cpassword = await bcrypt.hash(this.cpassword,12);
     }
@@ -46,6 +78,17 @@ userSchema.methods.generateAuthToken = async function(){
     }catch(err){
         console.log(err);
     }
+}
+
+//store the leave application
+userSchema.methods.addLeave = async function(email,team,from,days){
+  try{
+    this.leaves = this.leaves.concat({ email, team,from, days });
+    await this.save();
+    return this.leaves;
+  }catch(err){
+    console.log(err);
+  }
 }
 
 const User = mongoose.model('USER',userSchema);
